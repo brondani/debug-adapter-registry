@@ -16,10 +16,14 @@
                 "monitor reset halt",
                 "tbreak main"
             ],
+            "customResetCommands": [
+                "monitor reset halt"
+            ],
             "target": {
                 "server": "pyocd",
                 "serverParameters": [
                     "--probe", "stlink:",
+                    "--connect", "attach",
                     "--persist"
                 ],
                 "port": "<%= ports.get(pname) %>"
@@ -41,6 +45,9 @@
                 "<% for (let i = 0; i < files.length; i++) { %>",
                 "symbol-file <%= files[i] %><%= i < files.length - 1 ? \"\\n\" : '' %>",
                 "<% } %>"
+            ],
+            "customResetCommands": [
+                "monitor reset halt"
             ],
             "target": {
                 "port": "<%= ports.get(pname) %>"
@@ -65,10 +72,14 @@
                 "monitor reset halt",
                 "tbreak main"
             ],
+            "customResetCommands": [
+                "monitor reset halt"
+            ],
             "target": {
                 "server": "pyocd",
                 "serverParameters": [
                     "--probe", "stlink:",
+                    "--connect", "attach",
                     "--persist"
                 ],
                 "port": "<%= ports.get(pname) %>"
@@ -90,6 +101,9 @@
                 "<% for (let i = 0; i < files.length; i++) { %>",
                 "symbol-file <%= files[i] %><%= i < files.length - 1 ? \"\\n\" : '' %>",
                 "<% } %>"
+            ],
+            "customResetCommands": [
+                "monitor reset halt"
             ],
             "target": {
                 "port": "<%= ports.get(pname) %>"
@@ -132,7 +146,7 @@
             "label": "CMSIS Load",
             "type": "shell",
             "command": [
-                "pyocd load --probe stlink: --no-reset --cbuild-run ${command:cmsis-csolution.getCbuildRunFile}"
+                "pyocd load --probe stlink: --cbuild-run ${command:cmsis-csolution.getCbuildRunFile}"
             ],
             "problemMatcher": []
         },
@@ -140,7 +154,7 @@
             "label": "CMSIS Run",
             "type": "shell",
             "command": [
-                "pyocd gdbserver --probe stlink: --persist --reset-run --cbuild-run ${command:cmsis-csolution.getCbuildRunFile}"
+                "pyocd gdbserver --probe stlink: --connect attach --persist --reset-run --cbuild-run ${command:cmsis-csolution.getCbuildRunFile}"
             ],
             "problemMatcher": []
         },
