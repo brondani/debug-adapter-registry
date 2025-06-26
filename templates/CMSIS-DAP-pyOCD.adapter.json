@@ -22,8 +22,11 @@
             "target": {
                 "server": "pyocd",
                 "serverParameters": [
+                    "gdbserver",
+                    "--port", "<%= ports.get(pname) %>",
                     "--probe", "cmsisdap:",
-                    "--connect", "attach"
+                    "--connect", "attach",
+                    "--cbuild-run", "${command:cmsis-csolution.getCbuildRunFile}"
                 ],
                 "port": "<%= ports.get(pname) %>"
             },
@@ -77,9 +80,12 @@
             "target": {
                 "server": "pyocd",
                 "serverParameters": [
+                    "gdbserver",
+                    "--port", "<%= ports.get(pname) %>",
                     "--probe", "cmsisdap:",
                     "--connect", "attach",
-                    "--persist"
+                    "--persist",
+                    "--cbuild-run", "${command:cmsis-csolution.getCbuildRunFile}"
                 ],
                 "port": "<%= ports.get(pname) %>"
             },
@@ -165,9 +171,10 @@
             "options": { "cwd": "${workspaceFolder}/<%= solution_folder %>" },
             "args": [
                 "gdbserver",
-                "--probe", "cmsisdap:", 
-                "--connect", "attach", 
-                "--persist", 
+                "--port", "<%= ports.get(pname) %>",
+                "--probe", "cmsisdap:",
+                "--connect", "attach",
+                "--persist",
                 "--reset-run",
                 "--cbuild-run", "${command:cmsis-csolution.getCbuildRunFile}"
             ],
@@ -189,8 +196,7 @@
             "options": { "cwd": "${workspaceFolder}/<%= solution_folder %>" },
             "args": [
                 "list",
-                "--cbuild-run",
-                "${command:cmsis-csolution.getCbuildRunFile}"
+                "--cbuild-run", "${command:cmsis-csolution.getCbuildRunFile}"
             ],
             "problemMatcher": []
         }
