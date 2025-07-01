@@ -89,6 +89,10 @@ debug-adapters:
 
   - name: "AVH-FVP"
     template: FVP.adapter.json                # template file
+    defaults:
+      model: "set model executable as target-set.debugger.model in csolution.yml"
+      config: 
+      args: []
 
   - name: "Keil uVision"
     template: uVision.adapter.json            # template file
