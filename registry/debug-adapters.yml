@@ -96,3 +96,6 @@ debug-adapters:
 
   - name: "Keil uVision"
     template: uVision.adapter.json            # template file
+    defaults:
+      uv4: "C:\\Keil_v5\\UV4\\UV4.exe"
+      args: []
