@@ -2,8 +2,17 @@
     "tasks": [{
         "label": "CMSIS Load+Run",
         "type": "shell",
-        "command": "<%= uv4 %>",
-        "options": { "cwd": "${workspaceFolder}/<%= solution_folder %>" },
+        "command": "This is Windows only",
+        "windows": {
+            "command": "<%= uv4 %>",
+            "options": { 
+                "cwd": "${workspaceFolder}/<%= solution_folder %>",
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": [ "/d", "/c" ]
+                }
+            }
+        },
         "args": [
             "<%= solution_path %>",
             "<% for (const arg of args) { %>",
