@@ -25,7 +25,9 @@
                     "gdbserver",
                     "--probe", "stlink:",
                     "--connect", "attach",
-                    "--cbuild-run", "${command:cmsis-csolution.getCbuildRunFile}"
+                    "--cbuild-run", "${command:cmsis-csolution.getCbuildRunFile}",
+                    "--quiet",
+                    "--log", "*.cbuild_run,*server=info"
                 ],
                 "port": "<%= ports.get(pname) %>"
             },
@@ -83,7 +85,9 @@
                     "--probe", "stlink:",
                     "--connect", "attach",
                     "--persist",
-                    "--cbuild-run", "${command:cmsis-csolution.getCbuildRunFile}"
+                    "--cbuild-run", "${command:cmsis-csolution.getCbuildRunFile}",
+                    "--quiet",
+                    "--log", "*.cbuild_run,*server=info"
                 ],
                 "port": "<%= ports.get(pname) %>"
             },
@@ -248,7 +252,9 @@
                 "--connect", "attach",
                 "--persist",
                 "--reset-run",
-                "--cbuild-run", "${command:cmsis-csolution.getCbuildRunFile}"
+                "--cbuild-run", "${command:cmsis-csolution.getCbuildRunFile}",
+                "--quiet",
+                "--log", "*.cbuild_run,*server=info"
             ],
             "problemMatcher": []
         },
